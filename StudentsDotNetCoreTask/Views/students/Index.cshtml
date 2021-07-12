@@ -1,0 +1,39 @@
+﻿
+@model List<Students>
+
+<link href="~\DataTable\datatables.css" rel="stylesheet" />
+<div class="container">
+    <div class="bg-white rounded shadow p-4">
+        <h1 class="custom-control-inline mb-3">Students</h1>
+        <a class="btn bg-dark text-white float-end rounded-pill mb-1 custom-control-inline" asp-action="AddOrEdit" style="float:right"> add new student</a>
+
+        <form action="StudentCourses" method="post">
+            <table cellpadding="2" cellspacing="2" class="table table-bordered p-3 table-striped table-hover" id="myTable">
+                <tr class="p-2 m-2">
+                    <th class="p-2 m-5">Student Id</th>
+                    <th class="p-2 m-5">Student Name</th>
+                    <th class="p-2 m-5">Student Course</th>
+                </tr>
+                @foreach (var student in Model)
+                {
+                    <tr>
+                        <td class="p-2 m-5">@student.Id</td>
+                        <td class="p-2 m-5">@student.Name</td>
+                        <td class="p-2 m-5"> <button asp-action="StudentCourses" class="btn btn-success" name="id" value="@student.Id" type="submit">Course Info</button></td>
+                    </tr>
+                }
+            </table>
+        </form>
+
+    </div>
+</div>
+<br />
+
+
+
+<script src="~\DataTable\datatables.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable();
+    });
+</script>
