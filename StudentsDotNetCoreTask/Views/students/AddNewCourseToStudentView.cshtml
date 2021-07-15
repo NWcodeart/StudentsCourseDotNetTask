@@ -1,21 +1,21 @@
 ﻿@model List<CoursesList>
 
 
-<div id="AddCourseToStudentModal">
-    <form asp-action="AddNewCourseToStudent" method="post">
+<div class="AddCourseToStudentDiv">
+    <form method="post" id="formAddCourse">
 
-        <select name="courseId" class="custom-select">
+        <select id="courseId" class="custom-select">
             @foreach (var course in Model)
             {
-                <option value="@course.CourseId" name="courseId"> @course.CourseName </option>
+                <option value="@course.CourseId"> @course.CourseName </option>
             }
         </select>
 
-        <p class="text-danger m-3"> @ViewBag.ErrorMassege </p>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" value="@ViewBag.StudentId" name="studentId" class="btn btn-primary">Save changes</button>
+        <input class="btn btn-primary" type="button" id="btnSave" value="Save" />
 
     </form>
+
 </div>
 
-
+<script src="~/js/site.js"></script>

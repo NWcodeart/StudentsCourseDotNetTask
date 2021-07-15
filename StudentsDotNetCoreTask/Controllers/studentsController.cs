@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using StudentsDotNetCoreTask.Models;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace StudentsDotNetCoreTask.Controllers
     public class studentsController : Controller
     {
         private readonly StudentCoursesContext _db;
-        private int _studentId;
+        public static int  StudentId;
 
         public studentsController(StudentCoursesContext db)
         {
@@ -46,7 +47,13 @@ namespace StudentsDotNetCoreTask.Controllers
 
         public IActionResult StudentCourses(int id = 0)
         {
-            _studentId = id;
+            StudentId = id;
+            var StudentSelected = SelectStudent(StudentId);
+
+            return View(StudentSelected);
+        }
+        public List<StudentsInfo> SelectStudent(int id)
+        {
             var result = new List<StudentsInfo>();
             using (var db = _db)
             {
@@ -61,58 +68,57 @@ namespace StudentsDotNetCoreTask.Controllers
                     }).ToList()
                 }).ToList();
             }
-
-            
-
-            return View(result);
+            return result;
         }
-        //public List<Courses> UnAddedCourses( List<Courses> AddedCourses)
-        //{
-        //    var unAddedCourses = new List<Courses>();
-        //    var allCourse = _db.Courses.ToList();
-
-        //    foreach ( var x in allCourse)
-        //    {
-        //        if (x.Equals(AddedCourses))
-        //        {
-        //            continue;
-        //        }
-        //        else
-        //        {
-        //            unAddedCourses.Add(x);
-        //        }
-                
-        //    }
-
-        //    return unAddedCourses;
-        //}
-        public IActionResult AddNewCourseToStudentView( int studentId)
+        public List<CoursesList> UnAddedCourses()
         {
-            //var SCoursesUnAdded = new List<Students>();
-            //using (var db = _db)
-            //{
-            //    SCoursesUnAdded = db.Students.Where(s => s.Id == id).Select(x => new Students
-            //    {
-            //        Id = x.Id,
-            //        Name = x.Name,
-            //        courses = UnAddedCourses(x.courses.ToList()) //this function will return unadded courses
-            //    }).ToList();
-            //}
-            ViewBag.StudentId = studentId;
+            var studentInfo = _db.Students.Include(x=>x.courses).FirstOrDefault(s => s.Id == StudentId);
+            var studentCourses = studentInfo.courses;
 
-            var courses = new List<CoursesList>();
 
-            courses =_db.Courses.Select(c => new CoursesList
+            var unAddedCourses = new List<CoursesList>();
+            var allCourse = _db.Courses.ToList();
+
+            foreach (var course in allCourse)
             {
-                CourseId = c.Id,
-                CourseName = c.CourseName
-            }).ToList();
+                if (studentCourses.Any(x=>x.Id ==course.Id))
+                {
+                    continue;
+                }
+                else
+                {
+                    unAddedCourses.Add(new CoursesList 
+                    {
+                        CourseId = course.Id,
+                        CourseName = course.CourseName
+                    });
+                }
 
+            }
 
-            return PartialView("PlaceHolderHare", courses);
+            return unAddedCourses;
         }
-        public void AddNewCourseToStudent(int courseId , int studentId)
+
+        public IActionResult AddNewCourseToStudentView(int courseId = -1  )
         {
+
+            //if(courseId != -1)
+            //{
+            //    AddNewCourseToStudent(courseId);
+            //    return StudentCourses();
+            //}
+            //else
+            //{
+            var unAddedCourses = UnAddedCourses();
+
+
+                return PartialView("AddNewCourseToStudentView", unAddedCourses);
+            //}
+        }
+        [HttpPost]
+        public void AddNewCourseToStudent(int courseId  )
+        {
+            int studentId = StudentId;
             var courseAdd = new List<Courses>();
             using(_db)
             {
@@ -132,6 +138,7 @@ namespace StudentsDotNetCoreTask.Controllers
                 {
                     ViewBag.ErrorMassege = "this course is added";
                 }
+
 
             }
 
