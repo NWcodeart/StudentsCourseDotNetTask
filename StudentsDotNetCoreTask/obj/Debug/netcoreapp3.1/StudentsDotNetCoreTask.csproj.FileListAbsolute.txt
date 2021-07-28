@@ -156,3 +156,12 @@ D:\المستندات\internship\visual studio code projects\StudentsCourseDotNe
 D:\المستندات\internship\visual studio code projects\StudentsCourseDotNetTask\StudentsDotNetCoreTask\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\المستندات\internship\visual studio code projects\StudentsCourseDotNetTask\StudentsDotNetCoreTask\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutWithoutContent.cshtml.g.cs
 D:\المستندات\internship\visual studio code projects\StudentsCourseDotNetTask\StudentsDotNetCoreTask\obj\Debug\netcoreapp3.1\Razor\Views\students\AddNewCourseToStudentView.cshtml.g.cs
+D:\المستندات\internship\visual studio code projects\StudentsCourseDotNetTask\StudentsDotNetCoreTask\bin\Debug\netcoreapp3.1\EntityFramework.SqlServer.dll
+D:\المستندات\internship\visual studio code projects\StudentsCourseDotNetTask\StudentsDotNetCoreTask\bin\Debug\netcoreapp3.1\EntityFramework.dll
+D:\المستندات\internship\visual studio code projects\StudentsCourseDotNetTask\StudentsDotNetCoreTask\bin\Debug\netcoreapp3.1\System.CodeDom.dll
+D:\المستندات\internship\visual studio code projects\StudentsCourseDotNetTask\StudentsDotNetCoreTask\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+D:\المستندات\internship\visual studio code projects\StudentsCourseDotNetTask\StudentsDotNetCoreTask\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+D:\المستندات\internship\visual studio code projects\StudentsCourseDotNetTask\StudentsDotNetCoreTask\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+D:\المستندات\internship\visual studio code projects\StudentsCourseDotNetTask\StudentsDotNetCoreTask\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+D:\المستندات\internship\visual studio code projects\StudentsCourseDotNetTask\StudentsDotNetCoreTask\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\المستندات\internship\visual studio code projects\StudentsCourseDotNetTask\StudentsDotNetCoreTask\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll

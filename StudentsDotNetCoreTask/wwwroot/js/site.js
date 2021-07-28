@@ -30,7 +30,7 @@ $(document).ready(function () {
                     courseId: $("#courseId").val(), //Reading text box values using Jquery
                 },
                 success: function () {
-                    $("#form-modal").modal('toggle');
+                    $("#form-modal").modal('toggle'); 
                     location.reload(true);
                 }
 
